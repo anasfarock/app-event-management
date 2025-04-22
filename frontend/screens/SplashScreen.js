@@ -26,14 +26,14 @@ export default function SplashScreen() {
       }
     };
 
-    setTimeout(checkLoginStatus, 1500); // Splash duration
+    setTimeout(checkLoginStatus, 1500);
   }, []);
 
   return (
-    <View className="flex-1 bg-black justify-center items-center">
+    <View className="flex-1 bg-black justify-center items-center px-6">
       <Image
-        source={require('../assets/images/eclipse-logo.png')} // adjust if your logo is elsewhere
-        style={{ width: 345, height: 345 }}
+        source={require('../assets/images/eclipse-logo.png')}
+        className="w-[320px] h-[320px] -mt-6"
         resizeMode="contain"
       />
     </View>

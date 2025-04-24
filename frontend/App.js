@@ -1,7 +1,9 @@
-import "./global.css"
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useFonts } from 'expo-font';
+import { View, ActivityIndicator } from 'react-native';
+import './global.css';
 
 // Screens
 import SplashScreen from './screens/SplashScreen';
@@ -14,6 +16,20 @@ import AdminDashboardScreen from './screens/Admin/AdminDashboardScreen';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    'Poppins-Regular': require('./assets/fonts/Poppins-Regular.ttf'),
+    'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    'Poppins-SemiBold': require('./assets/fonts/Poppins-SemiBold.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View className="flex-1 justify-center items-center bg-white">
+        <ActivityIndicator size="large" color="black" />
+      </View>
+    );
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>

@@ -1,35 +1,35 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
 
 export default function LoginScreen() {
   const navigation = useNavigation();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (email.toLowerCase().includes('admin')) {
-      navigation.replace('AdminDashboard');
+    if (email.toLowerCase().includes("admin")) {
+      navigation.replace("AdminDashboard");
     } else {
-      navigation.replace('Home');
+      navigation.replace("Home");
     }
   };
 
   return (
-    <View className="flex-1 bg-white px-6 justify-center">
+    <View className="flex-1 bg-white px-6 pt-10 justify-center">
       {/* Logo */}
-      <View className="items-center mb-10">
+      <View className="items-center mb-8 -mt-6">
         <Image
-          source={require('../../assets/images/eclipse-logo-bbg.png')} // <-- Updated logo
-          className="w-[140px] h-[90px]"
-          resizeMode="contain"
+          source={require("../../assets/images/eclipse-crop.png")}
+          style={{
+            width: screenWidth * 0.8, // 80% of the device width
+            height: 120, // fixed height (adjustable)
+            resizeMode: "contain",
+          }}
         />
       </View>
 
@@ -60,7 +60,7 @@ export default function LoginScreen() {
 
       {/* Forgot Password */}
       <TouchableOpacity
-        onPress={() => navigation.navigate('ForgotPassword')}
+        onPress={() => navigation.navigate("ForgotPassword")}
         className="self-end mb-6"
       >
         <Text className="text-[#00bfa6] font-semibold text-sm font-[Poppins-SemiBold]">
@@ -81,10 +81,10 @@ export default function LoginScreen() {
       {/* Register Link */}
       <View className="items-center">
         <Text className="text-sm text-black font-[Poppins-Regular]">
-          Don’t have an account?{' '}
+          Don’t have an account?{" "}
           <Text
             className="text-[#00bfa6] font-semibold font-[Poppins-SemiBold]"
-            onPress={() => navigation.navigate('Register')}
+            onPress={() => navigation.navigate("Register")}
           >
             Register now
           </Text>

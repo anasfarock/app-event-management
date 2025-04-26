@@ -1,40 +1,44 @@
-import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { Dimensions } from "react-native";
+
+const screenWidth = Dimensions.get("window").width;
 
 export default function ForgotPasswordScreen() {
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   const handleSendOTP = () => {
     if (!email) {
-      alert('Please enter your registered email.');
+      alert("Please enter your registered email.");
       return;
     }
 
     // Simulate OTP process
-    console.log('Send OTP to:', email);
-    navigation.navigate('OTPVerification'); // Replace with actual screen name
+    console.log("Send OTP to:", email);
+    navigation.navigate("OTPVerification"); // Replace with actual screen name
   };
 
   return (
     <View className="flex-1 bg-white px-6 justify-center">
       <View className="items-center mb-6">
         <Image
-          source={require('../../assets/images/eclipse-logo.png')}
-          style={{ width: 180, height: 100 }}
-          resizeMode="contain"
+          source={require("../../assets/images/eclipse-crop.png")}
+          style={{
+            width: screenWidth * 0.8, // 80% of the device width
+            height: 120, // fixed height (adjustable)
+            resizeMode: "contain",
+          }}
         />
       </View>
 
-      <Text className="text-2xl font-bold text-black text-center mb-2">FORGOT</Text>
-      <Text className="text-2xl font-bold text-black text-center mb-6">PASSWORD</Text>
+      <Text className="text-2xl font-bold text-black text-center mb-2">
+        FORGOT
+      </Text>
+      <Text className="text-2xl font-bold text-black text-center mb-6">
+        PASSWORD
+      </Text>
 
       <Text className="text-center text-gray-500 mb-6">
         Enter your registered email and we’ll{"\n"}send you an OTP to verify.
@@ -53,11 +57,15 @@ export default function ForgotPasswordScreen() {
         className="bg-black py-3 rounded-xl mb-4"
         onPress={handleSendOTP}
       >
-        <Text className="text-white text-center font-bold text-base">Send OTP</Text>
+        <Text className="text-white text-center font-bold text-base">
+          Send OTP
+        </Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-        <Text className="text-[#00bfa6] font-semibold text-center">Back to Login</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Text className="text-[#00bfa6] font-semibold text-center">
+          Back to Login
+        </Text>
       </TouchableOpacity>
     </View>
   );

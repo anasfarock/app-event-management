@@ -1,1 +1,1 @@
-﻿# Event Management App
+﻿# Event Management App (Under Development)

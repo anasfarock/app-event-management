@@ -13,6 +13,7 @@ import ForgotPasswordScreen from "./screens/Auth/ForgotPasswordScreen";
 import HomeScreen from "./screens/User/HomeScreen";
 import AdminDashboardScreen from "./screens/Admin/AdminDashboardScreen";
 import OTPVerificationScreen from "./screens/Auth/OTPVerificationScreen";
+import ResetPasswordScreen from "./screens/Auth/ResetPasswordScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -47,6 +48,7 @@ export default function App() {
           name="OTPVerification"
           component={OTPVerificationScreen}
         />
+        <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

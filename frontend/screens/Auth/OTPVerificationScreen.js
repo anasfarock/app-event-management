@@ -25,7 +25,7 @@ export default function OtpVerificationScreen() {
 
   const handleVerify = () => {
     // Verify OTP logic here
-    navigation.replace("Home");
+    navigation.replace("ResetPassword"); // Navigate to Reset Password screen after verification
   };
 
   return (

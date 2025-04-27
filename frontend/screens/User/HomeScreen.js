@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   View,
   Text,
@@ -6,19 +6,19 @@ import {
   Image,
   ScrollView,
   TouchableOpacity,
-} from 'react-native';
-import { Ionicons, Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+} from "react-native";
+import { Ionicons, Feather } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export default function HomeScreen() {
   const navigation = useNavigation();
 
   const handleDetails = () => {
-    navigation.navigate('EventDetails'); // make sure this screen exists in your navigator
+    navigation.navigate("EventDetails"); // make sure this screen exists in your navigator
   };
 
   const handleBookNow = () => {
-    navigation.navigate('BookingForm'); // make sure this screen exists in your navigator
+    navigation.navigate("BookingForm"); // make sure this screen exists in your navigator
   };
 
   return (
@@ -26,7 +26,7 @@ export default function HomeScreen() {
       {/* Header */}
       <View className="flex-row items-center justify-between px-4 py-3 bg-white">
         <Image
-          source={require('../../assets/images/eclipse-logo.png')}
+          source={require("../../assets/images/eclipse-crop.png")}
           style={{ width: 100, height: 40 }}
           resizeMode="contain"
         />
@@ -52,29 +52,41 @@ export default function HomeScreen() {
         {/* Event Card */}
         <View className="bg-white mx-4 mt-4 border border-black/10 rounded-xl overflow-hidden shadow-sm">
           <Image
-            source={{ uri: 'https://images.unsplash.com/photo-1543269865-cbf427effbad' }}
-            style={{ height: 160, width: '100%' }}
+            source={{
+              uri: "https://images.unsplash.com/photo-1543269865-cbf427effbad",
+            }}
+            style={{ height: 160, width: "100%" }}
             resizeMode="cover"
           />
           <View className="p-4">
-            <Text className="text-base font-bold text-black mb-1">Tech Summit 2025</Text>
-            <Text className="text-sm text-gray-600">Location: Islamabad, Pakistan</Text>
+            <Text className="text-base font-bold text-black mb-1">
+              Tech Summit 2025
+            </Text>
+            <Text className="text-sm text-gray-600">
+              Location: Islamabad, Pakistan
+            </Text>
             <Text className="text-sm text-gray-600">Time: 02:00 PM</Text>
-            <Text className="text-sm text-gray-600 mb-3">Date: 20 May 2025</Text>
+            <Text className="text-sm text-gray-600 mb-3">
+              Date: 20 May 2025
+            </Text>
 
             <View className="flex-row justify-between">
               <TouchableOpacity
                 className="px-4 py-2 border border-black rounded-full"
                 onPress={handleDetails}
               >
-                <Text className="text-black text-sm font-semibold">Details</Text>
+                <Text className="text-black text-sm font-semibold">
+                  Details
+                </Text>
               </TouchableOpacity>
 
               <TouchableOpacity
                 className="px-4 py-2 bg-black rounded-full"
                 onPress={handleBookNow}
               >
-                <Text className="text-white text-sm font-semibold">Book Now</Text>
+                <Text className="text-white text-sm font-semibold">
+                  Book Now
+                </Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -87,11 +99,17 @@ export default function HomeScreen() {
           <Ionicons name="home" size={20} color="black" />
           <Text className="text-xs text-black">Home</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center" onPress={() => navigation.navigate('MyEvents')}>
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => navigation.navigate("MyEvents")}
+        >
           <Ionicons name="checkmark-done" size={20} color="gray" />
           <Text className="text-xs text-gray-700">My Events</Text>
         </TouchableOpacity>
-        <TouchableOpacity className="items-center" onPress={() => navigation.navigate('MyProfile')}>
+        <TouchableOpacity
+          className="items-center"
+          onPress={() => navigation.navigate("MyProfile")}
+        >
           <Ionicons name="person" size={20} color="gray" />
           <Text className="text-xs text-gray-700">Profile</Text>
         </TouchableOpacity>

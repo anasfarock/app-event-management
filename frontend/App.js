@@ -14,6 +14,12 @@ import HomeScreen from "./screens/User/HomeScreen";
 import AdminDashboardScreen from "./screens/Admin/AdminDashboardScreen";
 import OTPVerificationScreen from "./screens/Auth/OTPVerificationScreen";
 import ResetPasswordScreen from "./screens/Auth/ResetPasswordScreen";
+import CreateEventScreen from "./screens/Admin/CreateEventScreen";
+import ManageEventScreen from "./screens/Admin/ManageEventsScreen";
+import ViewBookingsScreen from "./screens/Admin/ViewBookingsScreen";
+import QRScannerScreen from "./screens/Admin/QRScannerScreen";
+import EventDetailsScreen from "./screens/Shared/EventDetailsScreen";
+import MyProfileScreen from "./screens/Shared/MyProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,6 +55,21 @@ export default function App() {
           component={OTPVerificationScreen}
         />
         <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
+        <Stack.Screen name="CreateEvent" component={CreateEventScreen} />
+        <Stack.Screen name="ManageEvents" component={ManageEventScreen} />
+        <Stack.Screen name="ViewBookings" component={ViewBookingsScreen} />
+        <Stack.Screen name="MyProfile" component={MyProfileScreen} />
+        <Stack.Screen name="QRScanner" component={QRScannerScreen} />
+        <Stack.Screen
+          name="EventDetails"
+          component={EventDetailsScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="EventDetailsAdmin"
+          component={EventDetailsScreen}
+          options={{ headerShown: true }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

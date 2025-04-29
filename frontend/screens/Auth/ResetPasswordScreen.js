@@ -29,34 +29,34 @@ export default function ResetPasswordScreen() {
 
     // Reset password logic here
     console.log("Password reset to:", newPassword);
-    navigation.navigate("Login"); // After reset, go back to Login
+    navigation.navigate("Login");
   };
 
   return (
-    <View className="flex-1 bg-white px-6 pt-10 justify-start">
+    <View className="flex-1 bg-white px-6 justify-center">
       {/* Logo */}
-      <View className="items-center mb-8 -mt-6">
+      <View className="items-center mb-6">
         <Image
           source={require("../../assets/images/eclipse-crop.png")}
           style={{
             width: screenWidth * 0.8,
-            height: 100,
+            height: 120,
             resizeMode: "contain",
           }}
         />
       </View>
 
       {/* Title */}
-      <Text className="text-2xl font-bold text-black text-center mb-2 font-poppins tracking-wide">
+      <Text className="text-2xl font-bold text-black text-center mb-2">
         CREATE NEW
       </Text>
-      <Text className="text-2xl font-bold text-black text-center mb-6 font-poppins tracking-wide">
+      <Text className="text-2xl font-bold text-black text-center mb-6">
         PASSWORD
       </Text>
 
-      {/* New Password Input */}
+      {/* Inputs */}
       <TextInput
-        className="bg-gray-100 px-4 py-3 rounded-md mb-4 text-black font-poppins"
+        className="bg-gray-100 px-4 py-3 rounded-md mb-4 text-black"
         placeholder="Enter New Password"
         placeholderTextColor="#888"
         secureTextEntry
@@ -64,9 +64,8 @@ export default function ResetPasswordScreen() {
         onChangeText={setNewPassword}
       />
 
-      {/* Confirm Password Input */}
       <TextInput
-        className="bg-gray-100 px-4 py-3 rounded-md mb-6 text-black font-poppins"
+        className="bg-gray-100 px-4 py-3 rounded-md mb-6 text-black"
         placeholder="Confirm New Password"
         placeholderTextColor="#888"
         secureTextEntry
@@ -76,19 +75,17 @@ export default function ResetPasswordScreen() {
 
       {/* Reset Password Button */}
       <TouchableOpacity
-        className="bg-black py-3 rounded-xl mb-6"
+        className="bg-black py-3 rounded-xl mb-4"
         onPress={handleResetPassword}
       >
-        <Text className="text-white text-center font-bold text-base font-poppins">
+        <Text className="text-white text-center font-bold text-base">
           Reset Password
         </Text>
       </TouchableOpacity>
 
       {/* Back Link */}
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text className="text-center text-[#00bfa6] font-poppins font-semibold">
-          Back
-        </Text>
+        <Text className="text-center text-[#00bfa6] font-semibold">Back</Text>
       </TouchableOpacity>
     </View>
   );

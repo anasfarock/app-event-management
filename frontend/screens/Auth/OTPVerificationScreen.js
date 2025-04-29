@@ -11,10 +11,10 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions } from "react-native";
 
+const screenWidth = Dimensions.get("window").width;
+
 export default function OtpVerificationScreen() {
   const navigation = useNavigation();
-  const screenWidth = Dimensions.get("window").width;
-
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 
   const handleOtpChange = (text, index) => {
@@ -24,42 +24,38 @@ export default function OtpVerificationScreen() {
   };
 
   const handleVerify = () => {
-    // Verify OTP logic here
-    navigation.replace("ResetPassword"); // Navigate to Reset Password screen after verification
+    // Verify OTP logic
+    navigation.replace("ResetPassword");
   };
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      className="flex-1 bg-white px-6 pt-10 justify-start"
+      className="flex-1 bg-white px-6 justify-center"
     >
-      {/* Logo */}
-      <View className="items-center mb-8 -mt-6">
+      <View className="items-center mb-6">
         <Image
-          source={require("../../assets/images/eclipse-crop.png")} // your updated logo
+          source={require("../../assets/images/eclipse-crop.png")}
           style={{
             width: screenWidth * 0.8,
-            height: 100,
+            height: 120,
             resizeMode: "contain",
           }}
         />
       </View>
 
-      {/* OTP Title */}
-      <Text className="text-2xl font-bold text-black text-center mb-2 font-poppins tracking-wide">
+      <Text className="text-2xl font-bold text-black text-center mb-2">
         OTP
       </Text>
-      <Text className="text-2xl font-bold text-black text-center mb-6 font-poppins tracking-wide">
+      <Text className="text-2xl font-bold text-black text-center mb-6">
         VERIFICATION
       </Text>
 
-      {/* OTP Info */}
-      <Text className="text-center text-gray-500 font-poppins mb-6">
-        Enter the 6-digits OTP sent to your email: john@abc.com
+      <Text className="text-center text-gray-500 mb-6">
+        Enter the 6-digit OTP sent to your{"\n"}registered email address.
       </Text>
 
-      {/* OTP Boxes */}
-      <View className="flex-row justify-between mb-8">
+      <View className="flex-row justify-between mb-6">
         {otp.map((digit, index) => (
           <TextInput
             key={index}
@@ -67,26 +63,22 @@ export default function OtpVerificationScreen() {
             onChangeText={(text) => handleOtpChange(text, index)}
             maxLength={1}
             keyboardType="number-pad"
-            className="w-12 h-12 bg-gray-100 rounded-md text-center text-2xl font-poppins text-black"
+            className="w-12 h-12 bg-gray-100 rounded-md text-center text-2xl text-black"
           />
         ))}
       </View>
 
-      {/* Verify Button */}
       <TouchableOpacity
-        className="bg-black py-3 rounded-xl mb-6"
+        className="bg-black py-3 rounded-xl mb-4"
         onPress={handleVerify}
       >
-        <Text className="text-white text-center font-bold text-base font-poppins">
+        <Text className="text-white text-center font-bold text-base">
           Verify
         </Text>
       </TouchableOpacity>
 
-      {/* Back Link */}
       <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Text className="text-center text-[#00bfa6] font-poppins font-semibold">
-          Back
-        </Text>
+        <Text className="text-[#00bfa6] font-semibold text-center">Back</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   );

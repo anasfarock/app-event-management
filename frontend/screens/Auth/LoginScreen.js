@@ -34,13 +34,13 @@ export default function LoginScreen() {
       </View>
 
       {/* Title */}
-      <Text className="text-2xl font-bold text-black mb-6 text-center font-[Poppins-Bold]">
+      <Text className="text-2xl font-bold text-black mb-6 text-center font-poppins">
         LOGIN
       </Text>
 
       {/* Email Field */}
       <TextInput
-        className="bg-gray-100 px-4 py-3 rounded-md mb-4 text-black font-[Poppins-Regular]"
+        className="bg-gray-100 px-4 py-3 rounded-md mb-4 text-black font-poppins"
         placeholder="Enter your email"
         placeholderTextColor="#888"
         value={email}

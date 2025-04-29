@@ -22,7 +22,7 @@ export default function HomeScreen() {
   };
 
   return (
-    <View className="flex-1 bg-white">
+    <View className="flex-1 py-7 bg-white">
       {/* Header */}
       <View className="flex-row items-center justify-between px-4 py-3 bg-white">
         <Image

@@ -48,7 +48,7 @@ export default function BookingFormScreen() {
       <View>
         <View className="flex-row items-center mb-6">
           <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Ionicons name="arrow-back" size={28} color="white" />
+            <Ionicons name="arrow-back" size={28} color="black" />
           </TouchableOpacity>
         </View>
 

@@ -74,21 +74,22 @@ export default function EventDetailsScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      <View className="flex-row items-center px-6 pt-12">
+      {/* Extra Back Button and Logo Commented */}
+      {/* <View className="flex-row items-center px-6 pt-12">
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="white" />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
-      <View className="items-center mb-4 mt-2">
+      {/* <View className="items-center mb-4 mt-2">
         <Image
           source={require("../../assets/images/eclipse-crop.png")}
           style={{ width: 120, height: 40, resizeMode: "contain" }}
         />
-      </View>
+      </View> */}
 
       <Image
-        source={require("../../assets/images/eclipse-crop.png")}
+        source={require("../../assets/images/eclipse-logo.png")}
         className="w-full h-48"
         resizeMode="cover"
       />

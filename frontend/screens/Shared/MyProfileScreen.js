@@ -20,7 +20,7 @@ export default function MyProfileScreen() {
       {/* Header */}
       <View className="flex-row items-center mb-6">
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={28} color="white" />
+          <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
       </View>
 
@@ -38,7 +38,7 @@ export default function MyProfileScreen() {
       {/* Profile Box */}
       <View className="border border-black rounded-lg px-6 py-6 items-center mb-6">
         <Image
-          source={require("../../assets/images/user-avatar.png")} // Replace with your user icon
+          source={require("../../assets/images/user-avatar.png")}
           style={{ width: 80, height: 80, marginBottom: 10 }}
         />
         <Text className="text-gray-800 font-semibold mb-1">Name: John Doe</Text>

@@ -1,21 +1,25 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, DrawerActions } from "@react-navigation/native";
 
 export default function AdminDashboardScreen() {
   const navigation = useNavigation();
 
   return (
     <View className="flex-1 bg-white">
-      {/* Header with logo and menu */}
+      {/* Header with logo and drawer trigger */}
       <View className="bg-black px-4 py-4 flex-row items-center justify-between">
         <Image
           source={require("../../assets/images/eclipse-logo.png")}
           style={{ width: 100, height: 40 }}
           resizeMode="contain"
         />
-        <Ionicons name="ellipsis-vertical" size={24} color="white" />
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        >
+          <Ionicons name="ellipsis-vertical" size={24} color="white" />
+        </TouchableOpacity>
       </View>
 
       {/* Title */}
@@ -51,7 +55,7 @@ export default function AdminDashboardScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("ManageEvents")}
+          onPress={() => navigation.navigate("ManageEvent")}
           className="border border-black px-6 py-3 rounded-lg"
         >
           <Text className="font-semibold text-black text-sm">
@@ -60,7 +64,7 @@ export default function AdminDashboardScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("ViewBookings")}
+          onPress={() => navigation.navigate("Bookings")}
           className="border border-black px-6 py-3 rounded-lg"
         >
           <Text className="font-semibold text-black text-sm">

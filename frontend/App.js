@@ -20,6 +20,10 @@ import ViewBookingsScreen from "./screens/Admin/ViewBookingsScreen";
 import QRScannerScreen from "./screens/Admin/QRScannerScreen";
 import EventDetailsScreen from "./screens/Shared/EventDetailsScreen";
 import MyProfileScreen from "./screens/Shared/MyProfileScreen";
+import MyEventScreen from "./screens/User/MyEventsScreen";
+import BookingFormScreen from "./screens/User/BookingFormScreen";
+import QRPassScreen from "./screens/User/QRPassScreen";
+import DrawerDashboard from "./screens/Admin/DrawerDashboard";
 
 const Stack = createNativeStackNavigator();
 
@@ -49,7 +53,7 @@ export default function App() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} />
+        {/* <Stack.Screen name="AdminDashboard" component={AdminDashboardScreen} /> */}
         <Stack.Screen
           name="OTPVerification"
           component={OTPVerificationScreen}
@@ -57,8 +61,12 @@ export default function App() {
         <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
         <Stack.Screen name="CreateEvent" component={CreateEventScreen} />
         <Stack.Screen name="ManageEvents" component={ManageEventScreen} />
+        <Stack.Screen name="QRPass" component={QRPassScreen} />
+        <Stack.Screen name="DrawerDashboard" component={DrawerDashboard} />
         <Stack.Screen name="ViewBookings" component={ViewBookingsScreen} />
+        <Stack.Screen name="MyEvents" component={MyEventScreen} />
         <Stack.Screen name="MyProfile" component={MyProfileScreen} />
+        <Stack.Screen name="BookingForm" component={BookingFormScreen} />
         <Stack.Screen name="QRScanner" component={QRScannerScreen} />
         <Stack.Screen
           name="EventDetails"

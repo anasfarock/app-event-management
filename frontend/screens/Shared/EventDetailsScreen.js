@@ -129,17 +129,6 @@ export default function EventDetailsScreen() {
       </ScrollView>
 
       {/* Bottom Navigation */}
-      <View className="flex-row justify-around items-center py-3 border-t border-gray-200">
-        <TouchableOpacity>
-          <Ionicons name="home-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="calendar-outline" size={24} color="black" />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Ionicons name="person-outline" size={24} color="black" />
-        </TouchableOpacity>
-      </View>
     </View>
   );
 }

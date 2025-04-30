@@ -21,7 +21,7 @@ export default function RegisterScreen() {
     }
     // Simulate registration and redirect
     console.log({ name, email, password, role });
-    navigation.replace(role === "Admin" ? "AdminDashboard" : "Home");
+    navigation.replace(role === "Admin" ? "DrawerDashboard" : "Home");
   };
 
   return (

@@ -35,21 +35,6 @@ export default function CreateEventScreen() {
 
   return (
     <View className="flex-1 bg-white px-6 pt-12">
-      {/* Header */}
-      <View className="flex-row items-center mb-6 px-2">
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={28} color="black" />
-        </TouchableOpacity>
-      </View>
-
-      {/* Logo */}
-      <View className="items-center mb-8">
-        <Image
-          source={require("../../assets/images/eclipse-crop.png")}
-          style={{ width: 120, height: 40, resizeMode: "contain" }}
-        />
-      </View>
-
       {/* Title */}
       <Text className="text-2xl font-bold text-black text-center mb-2 font-poppins">
         Create New

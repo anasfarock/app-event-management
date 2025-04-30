@@ -17,7 +17,7 @@ const Drawer = createDrawerNavigator();
 // 🔹 Custom top header bar (shown inside each screen)
 function CustomHeader({ navigation, title = "" }) {
   return (
-    <View className="bg-black px-4 py-4 flex-row items-center justify-between">
+    <View className="bg-white px-4 py-10 flex-row items-center justify-between">
       <Image
         source={require("../../assets/images/eclipse-crop.png")}
         style={{ width: 100, height: 40 }}
@@ -26,7 +26,7 @@ function CustomHeader({ navigation, title = "" }) {
       <Ionicons
         name="ellipsis-vertical"
         size={24}
-        color="white"
+        color="black"
         onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
       />
     </View>

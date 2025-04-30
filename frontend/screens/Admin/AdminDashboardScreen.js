@@ -8,20 +8,6 @@ export default function AdminDashboardScreen() {
 
   return (
     <View className="flex-1 bg-white">
-      {/* Header with logo and drawer trigger */}
-      <View className="bg-black px-4 py-4 flex-row items-center justify-between">
-        <Image
-          source={require("../../assets/images/eclipse-logo.png")}
-          style={{ width: 100, height: 40 }}
-          resizeMode="contain"
-        />
-        <TouchableOpacity
-          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
-        >
-          <Ionicons name="ellipsis-vertical" size={24} color="white" />
-        </TouchableOpacity>
-      </View>
-
       {/* Title */}
       <Text className="text-2xl font-bold text-black px-4 mt-6">Dashboard</Text>
 

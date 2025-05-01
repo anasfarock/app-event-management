@@ -125,7 +125,7 @@ export default function DrawerDashboard() {
         component={withHeader(ViewBookingsScreen)}
       />
       <Drawer.Screen name="QRScanner" component={withHeader(QRScannerScreen)} />
-      <Drawer.Screen name="MyProfile" component={withHeader(MyProfileScreen)} />
+      <Drawer.Screen name="MyProfile" component={MyProfileScreen} />
     </Drawer.Navigator>
   );
 }

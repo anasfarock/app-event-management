@@ -24,6 +24,7 @@ import MyEventScreen from "./screens/User/MyEventsScreen";
 import BookingFormScreen from "./screens/User/BookingFormScreen";
 import QRPassScreen from "./screens/User/QRPassScreen";
 import DrawerDashboard from "./screens/Admin/DrawerDashboard";
+import EditProfileScreen from "./screens/Shared/EditProfileScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -66,6 +67,7 @@ export default function App() {
         <Stack.Screen name="ViewBookings" component={ViewBookingsScreen} />
         <Stack.Screen name="MyEvents" component={MyEventScreen} />
         <Stack.Screen name="MyProfile" component={MyProfileScreen} />
+        <Stack.Screen name="EditProfile" component={EditProfileScreen} />
         <Stack.Screen name="BookingForm" component={BookingFormScreen} />
         <Stack.Screen name="QRScanner" component={QRScannerScreen} />
         <Stack.Screen

@@ -1,10 +1,17 @@
 import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 export default function MyProfileScreen() {
   const navigation = useNavigation();
+  const route = useRoute();
+
+  const {
+    name = "John Doe",
+    email = "john@example.com",
+    phone = "+12–345–67890",
+  } = route?.params || {};
 
   const handleLogout = () => {
     // Logic to clear session/token
@@ -12,7 +19,7 @@ export default function MyProfileScreen() {
   };
 
   const handleEditProfile = () => {
-    navigation.navigate("EditProfile");
+    navigation.navigate("EditProfile", { name, email, phone });
   };
 
   return (
@@ -41,13 +48,9 @@ export default function MyProfileScreen() {
           source={require("../../assets/images/user-avatar.png")}
           style={{ width: 80, height: 80, marginBottom: 10 }}
         />
-        <Text className="text-gray-800 font-semibold mb-1">Name: John Doe</Text>
-        <Text className="text-gray-800 font-semibold mb-1">
-          Email: john@example.com
-        </Text>
-        <Text className="text-gray-800 font-semibold">
-          Phone: +12–345–67890
-        </Text>
+        <Text className="text-gray-800 font-semibold mb-1">Name: {name}</Text>
+        <Text className="text-gray-800 font-semibold mb-1">Email: {email}</Text>
+        <Text className="text-gray-800 font-semibold">Phone: {phone}</Text>
       </View>
 
       {/* Buttons */}

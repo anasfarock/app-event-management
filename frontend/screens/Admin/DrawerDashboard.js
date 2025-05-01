@@ -11,24 +11,31 @@ import ManageEventScreen from "./ManageEventsScreen";
 import ViewBookingsScreen from "./ViewBookingsScreen";
 import QRScannerScreen from "./QRScannerScreen";
 import MyProfileScreen from "../Shared/MyProfileScreen";
+import { useRoute } from "@react-navigation/native";
 
 const Drawer = createDrawerNavigator();
 
 // 🔹 Custom top header bar (shown inside each screen)
 function CustomHeader({ navigation, title = "" }) {
+  const route = useRoute(); // Get current route name
+
   return (
     <View className="bg-white px-4 py-10 flex-row items-center justify-between">
-      {/* Back Button */}
-      <View className="">
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Ionicons name="arrow-back" size={24} color="black" />
-        </TouchableOpacity>
+      {/* Conditionally render Back Button */}
+      <View>
+        {route.name !== "AdminDashboard" && (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={24} color="black" />
+          </TouchableOpacity>
+        )}
       </View>
+
       <Image
         source={require("../../assets/images/eclipse-crop.png")}
         style={{ width: 100, height: 40 }}
         resizeMode="contain"
       />
+
       <Ionicons
         name="ellipsis-vertical"
         size={24}

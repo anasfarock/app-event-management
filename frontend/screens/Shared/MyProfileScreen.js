@@ -7,11 +7,12 @@ export default function MyProfileScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const {
-    name = "John Doe",
-    email = "john@example.com",
-    phone = "+12–345–67890",
-  } = route?.params || {};
+  const { updatedName, updatedEmail, updatedPhone, profileImage } =
+    route.params || {};
+
+  const name = updatedName || "John Doe";
+  const email = updatedEmail || "john@example.com";
+  const phone = updatedPhone || "+12–345–67890";
 
   const handleLogout = () => {
     // Logic to clear session/token
@@ -45,9 +46,14 @@ export default function MyProfileScreen() {
       {/* Profile Box */}
       <View className="border border-black rounded-lg px-6 py-6 items-center mb-6">
         <Image
-          source={require("../../assets/images/user-avatar.png")}
-          style={{ width: 80, height: 80, marginBottom: 10 }}
+          source={
+            profileImage
+              ? { uri: profileImage }
+              : require("../../assets/images/user-avatar.png")
+          }
+          style={{ width: 80, height: 80, borderRadius: 40, marginBottom: 10 }}
         />
+
         <Text className="text-gray-800 font-semibold mb-1">Name: {name}</Text>
         <Text className="text-gray-800 font-semibold mb-1">Email: {email}</Text>
         <Text className="text-gray-800 font-semibold">Phone: {phone}</Text>

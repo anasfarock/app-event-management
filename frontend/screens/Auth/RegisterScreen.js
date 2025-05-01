@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions } from "react-native";
+import axios from "axios";
 
 const screenWidth = Dimensions.get("window").width;
 

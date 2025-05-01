@@ -101,6 +101,7 @@ export default function DrawerDashboard() {
     <Drawer.Navigator
       screenOptions={{
         headerShown: false,
+        drawerPosition: "right",
         drawerStyle: {
           width: 260,
         },

@@ -10,6 +10,7 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import * as ImagePicker from "expo-image-picker";
 
 export default function CreateEventScreen() {
   const navigation = useNavigation();
@@ -20,6 +21,69 @@ export default function CreateEventScreen() {
 
   const [time, setTime] = useState(new Date());
   const [showTimePicker, setShowTimePicker] = useState(false);
+  const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+      base64: true,
+    });
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
+  const handleCreateEvent = async () => {
+    if (!title || !description || !date || !time || !image) {
+      alert("Please fill all fields and upload an image");
+      return;
+    }
+
+    try {
+      // Upload image to Cloudinary
+      const data = new FormData();
+      data.append("file", {
+        uri: image,
+        type: "image/jpeg",
+        name: "event.jpg",
+      });
+      data.append("upload_preset", "YOUR_UPLOAD_PRESET");
+
+      const cloudRes = await fetch(
+        "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload",
+        {
+          method: "POST",
+          body: data,
+        }
+      );
+
+      const cloudData = await cloudRes.json();
+      const imageUrl = cloudData.secure_url;
+
+      // Send to backend
+      const res = await API.post("/events", {
+        title,
+        description,
+        date: date.toISOString(),
+        time: time.toISOString(),
+        image: imageUrl,
+      });
+
+      if (res.data.success) {
+        alert("Event created!");
+        navigation.goBack();
+      } else {
+        alert(res.data.message || "Event creation failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error creating event");
+    }
+  };
 
   const [description, setDescription] = useState("");
 
@@ -113,11 +177,21 @@ export default function CreateEventScreen() {
       />
 
       {/* Upload Image */}
-      <TouchableOpacity className="border border-black px-4 py-2 rounded-md mb-6">
+      <TouchableOpacity
+        onPress={pickImage}
+        className="border border-black px-4 py-2 rounded-md mb-4"
+      >
         <Text className="text-black font-semibold text-center">
           Upload Image
         </Text>
       </TouchableOpacity>
+
+      {image && (
+        <Image
+          source={{ uri: image }}
+          style={{ width: "100%", height: 200, borderRadius: 10 }}
+        />
+      )}
 
       {/* Create Button */}
       <TouchableOpacity

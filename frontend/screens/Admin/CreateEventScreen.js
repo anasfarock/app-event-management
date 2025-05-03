@@ -87,16 +87,6 @@ export default function CreateEventScreen() {
 
   const [description, setDescription] = useState("");
 
-  const handleCreateEvent = () => {
-    // Event creation logic
-    console.log({
-      title,
-      date: date.toDateString(),
-      time: time.toLocaleTimeString(),
-      description,
-    });
-  };
-
   return (
     <View className="flex-1 bg-white px-6 pt-12">
       {/* Title */}

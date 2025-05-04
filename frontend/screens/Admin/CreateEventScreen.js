@@ -10,6 +10,7 @@ import {
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { useNavigation } from "@react-navigation/native";
 import { Ionicons } from "@expo/vector-icons";
+import API from "../../api"; // Adjust the path if your file structure is different
 import * as ImagePicker from "expo-image-picker";
 
 export default function CreateEventScreen() {

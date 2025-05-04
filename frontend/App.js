@@ -7,6 +7,7 @@ import "./global.css";
 
 // Screens
 import SplashScreen from "./screens/SplashScreen";
+import API from "./api"; // Adjust the path if your file structure is different
 import LoginScreen from "./screens/Auth/LoginScreen";
 import RegisterScreen from "./screens/Auth/RegisterScreen";
 import ForgotPasswordScreen from "./screens/Auth/ForgotPasswordScreen";

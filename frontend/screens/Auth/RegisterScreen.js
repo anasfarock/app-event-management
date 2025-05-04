@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Dimensions } from "react-native";
-import axios from "axios";
+import API from "../../api";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -15,14 +15,35 @@ export default function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("User"); // default role
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
+    if (!name || !email || !password || !confirmPassword) {
+      alert("All fields are required");
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert("Passwords do not match");
       return;
     }
-    // Simulate registration and redirect
-    console.log({ name, email, password, role });
-    navigation.replace(role === "Admin" ? "DrawerDashboard" : "Home");
+
+    try {
+      const res = await API.post("/register", {
+        name,
+        email,
+        password,
+        role,
+      });
+
+      if (res.data.success) {
+        alert("Registration successful");
+        navigation.replace(role === "Admin" ? "DrawerDashboard" : "Home");
+      } else {
+        alert(res.data.message || "Registration failed");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Error registering user");
+    }
   };
 
   return (

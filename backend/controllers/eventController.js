@@ -1,6 +1,6 @@
-const { Event } = require("../models");
+import { Event } from "../models/index.js";
 
-const createEvent = async (req, res) => {
+export const createEvent = async (req, res) => {
   try {
     const { title, description, date, time, image } = req.body;
 
@@ -13,9 +13,7 @@ const createEvent = async (req, res) => {
     const event = await Event.create({ title, description, date, time, image });
     res.status(201).json({ success: true, event });
   } catch (err) {
-    console.error(err);
+    console.error("Create Event Error:", err);
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
-module.exports = { createEvent };

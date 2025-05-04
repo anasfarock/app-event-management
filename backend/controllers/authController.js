@@ -1,6 +1,7 @@
-const { User } = require("../models");
+import { User } from "../models/index.js";
+import bcrypt from "bcrypt";
 
-const register = async (req, res) => {
+export const register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
 
@@ -11,6 +12,7 @@ const register = async (req, res) => {
         .json({ success: false, message: "All fields required" });
     }
 
+    // Check if user already exists
     const existing = await User.findOne({ where: { email } });
     if (existing) {
       return res
@@ -18,12 +20,19 @@ const register = async (req, res) => {
         .json({ success: false, message: "Email already in use" });
     }
 
-    const user = await User.create({ name, email, password, role });
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Save user
+    const user = await User.create({
+      name,
+      email,
+      password: hashedPassword,
+      role,
+    });
     res.status(201).json({ success: true, user });
   } catch (err) {
-    console.error(err);
+    console.error("Register error:", err);
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
-module.exports = { register };

@@ -1,12 +1,12 @@
-const { DataTypes } = require("sequelize");
-const sequelize = require("../config/db");
+import { DataTypes } from "sequelize";
+import sequelize from "../config/db.js";
 
 const Event = sequelize.define("Event", {
   title: DataTypes.STRING,
   description: DataTypes.TEXT,
   date: DataTypes.DATE,
   time: DataTypes.DATE,
-  image: DataTypes.STRING, // ✅ add this
+  image: DataTypes.STRING, // ✅ stores Cloudinary/local image URL
 });
 
-module.exports = Event;
+export default Event;

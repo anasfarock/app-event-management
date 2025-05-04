@@ -1,9 +1,10 @@
-const sequelize = require("../config/db");
-const User = require("./User");
+import sequelize from "../config/db.js";
+import User from "./User.js";
+import Event from "./Event.js";
 
 const syncDB = async () => {
   await sequelize.sync({ alter: true });
   console.log("Database synced.");
 };
 
-module.exports = { sequelize, User, syncDB };
+export { sequelize, User, Event, syncDB };
